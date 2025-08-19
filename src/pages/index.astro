@@ -1,5 +1,5 @@
 ---
-
+import { Font } from "astro:assets";
 ---
 
 <html lang="en">
@@ -9,9 +9,10 @@
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>Hack Club Győr</title>
+        <Font cssVariable="--font-inter" preload />
     </head>
-    <body>
-        <h1>Hack Club Győr</h1>
+    <body style="font-family: var(--font-inter);">
+        <h1 style="font-style: italic; font-weight: 800;">Hack Club Győr</h1>
         <section>
             <p>
                 A Hack Club egy globális nonprofit hálózat, amely középiskolai
