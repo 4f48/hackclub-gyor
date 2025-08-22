@@ -4,7 +4,6 @@ import { drizzle } from "drizzle-orm/d1";
 import { db } from "@/lib/db";
 import { member } from "@/lib/schema";
 import { mail } from "@/lib/mail";
-import { webhookClient } from "@/lib/discord";
 import { now } from "@internationalized/date";
 
 export const server = {
@@ -26,7 +25,7 @@ export const server = {
         school: input.school,
       });
       if (rowsAffected === 1) {
-        await webhookClient.send({
+        const payload = {
           embeds: [
             {
               title: "Új klubtag",
@@ -64,6 +63,11 @@ export const server = {
           username: "Orpheo",
           avatarURL:
             "https://rawr.hackclub.com/dinosaur_sealing_letters_with_wax.png",
+        };
+        await fetch(import.meta.env.DISCORD_WEBHOOK_URL, {
+          method: "post",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(payload),
         });
       }
     },
