@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -29,6 +29,31 @@ export default defineConfig({
         ],
       },
     ],
+  },
+  env: {
+    schema: {
+      DISCORD_WEBHOOK_URL: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+      }),
+      RESEND_KEY: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+      }),
+      TURSO_DATABASE_URL: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+      }),
+      TURSO_TOKEN: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+      }),
+    },
+    validateSecrets: true,
   },
   vite: {
     plugins: [tailwindcss()],

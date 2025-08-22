@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { member } from "@/lib/schema";
 import { mail } from "@/lib/mail";
 import { now } from "@internationalized/date";
+import { DISCORD_WEBHOOK_URL } from "astro:env/server";
 
 export const server = {
   signup: defineAction({
@@ -65,7 +66,7 @@ export const server = {
             avatarURL:
               "https://rawr.hackclub.com/dinosaur_sealing_letters_with_wax.png",
           };
-          await fetch(import.meta.env.DISCORD_WEBHOOK_URL, {
+          await fetch(DISCORD_WEBHOOK_URL, {
             method: "post",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(payload),

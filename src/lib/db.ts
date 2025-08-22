@@ -1,10 +1,11 @@
 import { drizzle } from "drizzle-orm/libsql";
 import * as schema from "@/lib/schema";
+import { TURSO_DATABASE_URL, TURSO_TOKEN } from "astro:env/server";
 
 export const db = drizzle({
   connection: {
-    url: import.meta.env.TURSO_DATABASE_URL!,
-    authToken: import.meta.env.TURSO_TOKEN!,
+    url: TURSO_DATABASE_URL,
+    authToken: TURSO_TOKEN,
   },
   schema,
 });
