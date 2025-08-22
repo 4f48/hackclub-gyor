@@ -4,6 +4,8 @@ import { drizzle } from "drizzle-orm/d1";
 import { db } from "@/lib/db";
 import { member } from "@/lib/schema";
 import { mail } from "@/lib/mail";
+import { webhookClient } from "@/lib/discord";
+import { now } from "@internationalized/date";
 
 export const server = {
   signup: defineAction({
@@ -16,13 +18,54 @@ export const server = {
       birthday: z.string().date(),
     }),
     handler: async (input) => {
-      await db.insert(member).values({
+      const { rowsAffected } = await db.insert(member).values({
         birthday: new Date(input.birthday),
         discord: input.discord,
         email: input.email,
         name: input.name,
         school: input.school,
       });
+      if (rowsAffected === 1) {
+        await webhookClient.send({
+          embeds: [
+            {
+              title: "Új klubtag",
+              fields: [
+                {
+                  name: "Név",
+                  value: input.name,
+                  inline: true,
+                },
+                {
+                  name: "E-mail cím",
+                  value: input.email,
+                  inline: true,
+                },
+                {
+                  name: "Discord",
+                  value: input.discord,
+                  inline: true,
+                },
+                {
+                  name: "Iskola",
+                  value: input.school,
+                  inline: true,
+                },
+                {
+                  name: "Születésnap",
+                  value: input.birthday,
+                  inline: true,
+                },
+              ],
+              color: 0x00ff00,
+              timestamp: now("Europe/Budapest").toAbsoluteString(),
+            },
+          ],
+          username: "Orpheo",
+          avatarURL:
+            "https://rawr.hackclub.com/dinosaur_sealing_letters_with_wax.png",
+        });
+      }
     },
   }),
 };

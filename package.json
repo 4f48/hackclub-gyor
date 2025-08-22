@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.3",
     "bits-ui": "^2.9.4",
+    "discord.js": "^14.22.1",
     "drizzle-orm": "^0.44.4",
     "resend": "^6.0.1",
     "svelte": "^5.38.2",
