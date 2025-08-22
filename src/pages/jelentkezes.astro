@@ -3,14 +3,20 @@ import { Image } from "astro:assets";
 import Layout from "@/layouts/html.astro";
 import FormField from "@/components/formfield.astro";
 import logo from "@/assets/images/logo.png";
+import Date from "@/components/date.svelte";
 ---
 
 <Layout class="flex justify-center">
     <form class="mt-24 w-lg bg-neutral-900 border p-6 space-y-4">
         <div class="flex flex-col items-center gap-2">
-            <Image alt="Hack Club Győr logo" class="size-24" src={logo} />
+            <Image
+                alt="Hack Club Győr logo"
+                class="size-24 select-none"
+                draggable={false}
+                src={logo}
+            />
             <h1 class="text-2xl text-center font-extrabold">
-                Hack Club Győr Jelentkezés
+                Hack Club Győr jelentkezés
             </h1>
         </div>
         <FormField id="name" name="Teljes név" placeholder="Orpheus Dino" />
@@ -25,12 +31,7 @@ import logo from "@/assets/images/logo.png";
             name="Iskola"
             placeholder="Győri SZC Jedlik Ányos..."
         />
-        <FormField
-            id="birthday"
-            name="Születésnap"
-            max={new Date().toISOString().split("T")[0]}
-            type="date"
-        />
+        <Date client:visible name="Születésnap" />
         <button
             class="bg-[#00ff00] text-black w-full p-1 cursor-pointer"
             type="submit">Beküldés</button
