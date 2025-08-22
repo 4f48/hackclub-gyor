@@ -7,6 +7,7 @@ export const server = {
     input: z.object({
       name: z.string(),
       email: z.string().email(),
+      discord: z.string(),
       school: z.string(),
       birthday: z.string().date(),
     }),
