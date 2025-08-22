@@ -3,11 +3,22 @@ import { Image } from "astro:assets";
 import Layout from "@/layouts/html.astro";
 import FormField from "@/components/formfield.astro";
 import logo from "@/assets/images/logo.png";
-import Date from "@/components/date.svelte";
+import Birthday from "@/components/birthday.svelte";
+import { actions } from "astro:actions";
+
+export const prerender = false;
+const result = Astro.getActionResult(actions.signup);
+if (result && result.error) {
+    console.error(result);
+}
 ---
 
 <Layout class="flex justify-center">
-    <form class="mt-24 w-lg bg-neutral-900 border p-6 space-y-4">
+    <form
+        action={actions.signup}
+        class="mt-24 w-lg bg-neutral-900 border p-6 space-y-4"
+        method="post"
+    >
         <div class="flex flex-col items-center gap-2">
             <Image
                 alt="Hack Club Győr logo"
@@ -19,19 +30,29 @@ import Date from "@/components/date.svelte";
                 Hack Club Győr jelentkezés
             </h1>
         </div>
-        <FormField id="name" name="Teljes név" placeholder="Orpheus Dino" />
+        <FormField
+            id="name"
+            label="Teljes név"
+            name="name"
+            placeholder="Orpheus Dino"
+            required
+        />
         <FormField
             id="email"
-            name="E-mail cím"
+            label="E-mail cím"
+            name="email"
             placeholder="orpheus@hackclubgyor.com"
             type="email"
+            required
         />
         <FormField
             id="school"
-            name="Iskola"
+            label="Iskola"
+            name="school"
             placeholder="Győri SZC Jedlik Ányos..."
+            required
         />
-        <Date client:visible name="Születésnap" />
+        <Birthday client:visible />
         <button
             class="bg-[#00ff00] text-black w-full p-1 cursor-pointer"
             type="submit">Beküldés</button

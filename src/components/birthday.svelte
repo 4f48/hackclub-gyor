@@ -1,17 +1,12 @@
 <script lang="ts">
+    import { today } from "@internationalized/date";
     import { DateField, type WithoutChildrenOrChild } from "bits-ui";
-
-    type Props = WithoutChildrenOrChild<DateField.RootProps> & {
-        id: string;
-        name: string;
-    };
-    const { id, name, ...props }: Props = $props();
 </script>
 
-<DateField.Root locale="hu" {...props}>
+<DateField.Root locale="hu" required>
     <div class="grid focus-within:text-[#00ff00] mb-4">
-        <DateField.Label>{name}</DateField.Label>
-        <DateField.Input class="p-1 border">
+        <DateField.Label>Születésnap</DateField.Label>
+        <DateField.Input class="p-1 border" id="birthday" name="birthday">
             {#snippet children({ segments })}
                 {#each segments as { part, value }}
                     <DateField.Segment
