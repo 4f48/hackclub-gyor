@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+    id: string;
+    name: string;
+}
+const { id, name, ...props } = Astro.props;
+---
+
+<div class="grid">
+    <label>{name}</label>
+    <input
+        class="p-1 outline focus-visible:outline-2 focus-visible:outline-fg placeholder:text-fg/50"
+        id={id}
+        name={name}
+        {...props}
+    />
+</div>

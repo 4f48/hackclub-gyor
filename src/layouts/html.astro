@@ -15,10 +15,9 @@ const { class: className, ...props }: HTMLAttributes<"body"> = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <title>Hack Club Győr</title>
 
-        <Font cssVariable="--font-inter" preload />
         <Font cssVariable="--font-jbm" preload />
     </head>
-    <body class={cn("bg-bg0 text-fg", className)} {...props}>
+    <body class={cn("bg-bg0 text-fg font-mono", className)} {...props}>
         <slot />
     </body>
 </html>
