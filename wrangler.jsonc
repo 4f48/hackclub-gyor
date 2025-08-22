@@ -8,6 +8,13 @@
     "binding": "ASSETS",
     "directory": "./dist",
   },
+  "d1_databases": [
+    {
+      "binding": "MEMBERS",
+      "database_id": "85ee6486-3370-4388-b07b-eb95a5574583",
+      "experimental_remote": true,
+    },
+  ],
   "observability": {
     "enabled": true,
   },
