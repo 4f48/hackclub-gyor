@@ -1,39 +1,31 @@
 ---
-import { Font } from "astro:assets";
+import Layout from "@/layouts/html.astro";
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Hack Club Győr</title>
-        <Font cssVariable="--font-inter" preload />
-    </head>
-    <body style="font-family: var(--font-inter);">
-        <h1 style="font-style: italic; font-weight: 800;">Hack Club Győr</h1>
-        <section>
-            <p>
-                A Hack Club egy globális nonprofit hálózat, amely középiskolai
-                programozási klubokat fog össze, ahol a diákok programozást
-                tanulnak, projekteket készítenek és egy támogató közösséggel
-                ismerkednek meg.
-            </p>
-            <p>
-                Ingyenes források, projektötletek és minden szintű diák számára
-                barátságos környezet biztosításával segíti a tizenéveseket
-                abban, hogy a technológia segítségével alkotókká váljanak.
-            </p>
-            <p>
-                A Hack Club segít a diákoknak programozási készségeik,
-                kreativitásuk és vezetői képességeik fejlesztésében, miközben
-                pozitív hatást gyakorolnak iskoláikra és közösségeikre.
-            </p>
-            <p>
-                Tudj meg többet: <a href="https://hackclub.com">hackclub.com</a>
-                (angol)
-            </p>
-        </section>
-    </body>
-</html>
+<Layout class="font-mono flex justify-center">
+    <main class="w-3xl mt-24 border p-6 border-fg bg-bg mx-3 space-y-2">
+        <h1 class="font-extrabold italic text-fg0 text-2xl tracking-tight">
+            Hack Club Győr
+        </h1>
+        <p class="text-justify">
+            Mi a győri Hack Club vagyunk, diákokból álló közösség, akik imádják
+            a számítógépeket, a programozást és az alkotást. Tagjai vagyunk egy
+            nemzetközi <a href="https://hackclub.com"
+                >programozóklub-hálózatnak</a
+            >. A Hack Clubban a tagok <a href="https://shiba.hackclub.com"
+                >játékokat készítenek</a
+            > és <a href="https://hackclub.com/onboard"
+                >áramköröket is terveznek</a
+            >. Ha ez neked is érdekes, csatlakozz hozzánk!
+        </p>
+        <div
+            class="flex gap-5 items-center *:no-underline *:px-1 *:text-fg *:hover:text-bg *:hover:bg-fg"
+        >
+            <a class="bg-fg text-bg!" href="/jelentkezes">Jelentkezés &gt;</a>
+            <a href="/programok">Programok &gt;</a>
+            <a href="https://hcb.hackclub.com/donations/start/hack-club-gyor"
+                >Támogatás &gt;</a
+            >
+        </div>
+    </main>
+</Layout>

@@ -1,0 +1,24 @@
+---
+import { Font } from "astro:assets";
+import "@/styles/global.css";
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib";
+
+const { class: className, ...props }: HTMLAttributes<"body"> = Astro.props;
+---
+
+<html lang="hu">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Hack Club Győr</title>
+
+        <Font cssVariable="--font-inter" preload />
+        <Font cssVariable="--font-jbm" preload />
+    </head>
+    <body class={cn("bg-bg0 text-fg", className)} {...props}>
+        <slot />
+    </body>
+</html>
