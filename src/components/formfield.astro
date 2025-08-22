@@ -8,12 +8,12 @@ interface Props extends HTMLAttributes<"input"> {
 const { id, name, ...props } = Astro.props;
 ---
 
-<div class="grid">
-    <label>{name}</label>
+<div class="grid focus-within:text-[#00ff00]">
     <input
-        class="p-1 outline focus-visible:outline-2 focus-visible:outline-fg placeholder:text-fg/50"
+        class="p-1 peer outline focus-visible:outline-2 focus-visible:outline-[#00ff00] order-2"
         id={id}
         name={name}
         {...props}
     />
+    <label class="order-1" for={id}>{name}</label>
 </div>

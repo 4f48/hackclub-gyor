@@ -3,20 +3,14 @@
 @theme {
     --font-sans: var(--font-inter);
     --font-mono: var(--font-jbm);
-
-    --color-bg: #fbf1c7;
-    --color-bg0: #f9f5d7;
-    --color-fg: #3c3836;
-    --color-fg0: #282828;
-    --color-link: #076678;
 }
 
 @layer base {
     * {
-        border-color: var(--color-fg);
+        border-color: white;
     }
     a {
-        color: var(--color-link);
+        color: lime;
         text-decoration: underline;
     }
 }
