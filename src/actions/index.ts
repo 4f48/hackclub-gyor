@@ -1,7 +1,9 @@
 import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
 import { drizzle } from "drizzle-orm/d1";
-import * as schema from "@/lib/schema";
+import { db } from "@/lib/db";
+import { member } from "@/lib/schema";
+import { mail } from "@/lib/mail";
 
 export const server = {
   signup: defineAction({
@@ -13,14 +15,13 @@ export const server = {
       school: z.string(),
       birthday: z.string().date(),
     }),
-    handler: async ({ birthday, discord, email, name, school }, { locals }) => {
-      const db = drizzle(locals.runtime.env.MEMBERS, { schema });
-      await db.insert(schema.member).values({
-        birthday: new Date(birthday),
-        discord,
-        email,
-        name,
-        school,
+    handler: async (input) => {
+      await db.insert(member).values({
+        birthday: new Date(input.birthday),
+        discord: input.discord,
+        email: input.email,
+        name: input.name,
+        school: input.school,
       });
     },
   }),
