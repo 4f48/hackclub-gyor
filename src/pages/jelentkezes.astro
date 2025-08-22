@@ -16,13 +16,14 @@ if (result && result.error) {
 <Layout class="flex justify-center">
     <form
         action={actions.signup}
-        class="mt-24 w-lg bg-neutral-900 border p-6 space-y-4"
+        class="md:mt-24 md:w-lg md:bg-neutral-900 md:border p-6 space-y-4"
         method="post"
     >
         <div class="flex flex-col items-center gap-2">
             <Image
                 alt="Hack Club Győr logo"
                 class="size-24 select-none"
+                loading="eager"
                 draggable={false}
                 src={logo}
             />
