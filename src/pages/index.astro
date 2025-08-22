@@ -21,10 +21,11 @@ import Layout from "@/layouts/html.astro";
             >. Ha ez neked is érdekes, csatlakozz hozzánk!
         </p>
         <div
-            class="flex gap-5 items-center *:no-underline *:px-1 *:hover:text-black *:hover:bg-[#00ff00]"
+            class="inline-flex group gap-5 items-center *:no-underline *:px-1 *:hover:text-black *:hover:bg-[#00ff00]"
         >
-            <a class="bg-[#00ff00] text-black!" href="/jelentkezes"
-                >Jelentkezés &gt;</a
+            <a
+                class="group-hover:bg-transparent group-hover:text-[#00ff00] bg-[#00ff00] text-black"
+                href="/jelentkezes">Jelentkezés &gt;</a
             >
             <a href="/programok">Programok &gt;</a>
             <a href="https://hcb.hackclub.com/donations/start/hack-club-gyor"
