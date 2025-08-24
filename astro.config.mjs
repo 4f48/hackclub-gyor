@@ -28,6 +28,18 @@ export default defineConfig({
           },
         ],
       },
+      {
+        cssVariable: "--font-fraunces",
+        name: "Fraunces",
+        provider: "local",
+        variants: [
+          {
+            src: ["./src/assets/fonts/Fraunces[SOFT,WONK,opsz,wght].woff2"],
+            style: "normal",
+            variationSettings: '"WONK" 0',
+          },
+        ],
+      },
     ],
   },
   env: {

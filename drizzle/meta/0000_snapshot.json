@@ -53,16 +53,12 @@
       "indexes": {
         "member_email_unique": {
           "name": "member_email_unique",
-          "columns": [
-            "email"
-          ],
+          "columns": ["email"],
           "isUnique": true
         },
         "member_discord_unique": {
           "name": "member_discord_unique",
-          "columns": [
-            "discord"
-          ],
+          "columns": ["discord"],
           "isUnique": true
         }
       },
