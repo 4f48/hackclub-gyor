@@ -32,57 +32,109 @@ export default defineAction({
           <!DOCTYPE html>
           <html>
             <head>
-              <link rel="preconnect" href="https://fonts.googleapis.com" />
-              <link
-                rel="preconnect"
-                href="https://fonts.gstatic.com"
-                crossorigin
-              />
-              <link
-                href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-                rel="stylesheet"
-              />
               <style>
+                @font-face {
+                  font-family: "JetBrains Mono";
+                  font-style: normal;
+                  font-weight: 400;
+                  src: url("https://fonts.gstatic.com/s/jetbrainsmono/v13/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2")
+                    format("woff2");
+                }
+                @font-face {
+                  font-family: "JetBrains Mono";
+                  font-style: normal;
+                  font-weight: 800;
+                  src: url("https://fonts.gstatic.com/s/jetbrainsmono/v13/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2")
+                    format("woff2");
+                }
+
+                /* Force background colors using !important and multiple selectors */
+                html,
+                body,
+                table,
+                td {
+                  background-color: black !important;
+                  color: white !important;
+                }
+
                 body {
-                  font-family: "JetBrains Mono", monospace;
+                  font-family:
+                    "JetBrains Mono", "Courier New", monospace !important;
                   font-optical-sizing: auto;
                   font-style: normal;
-
-                  background-color: black;
-                  color: white;
+                  margin: 0 !important;
+                  padding: 20px !important;
+                  background-color: black !important;
+                  color: white !important;
                 }
+
                 h1 {
-                  color: #00ff00;
+                  color: #00ff00 !important;
                   font-weight: 800;
                   font-size: 1.5rem;
                   line-height: 2rem;
                   margin-bottom: 15px;
+                  font-family:
+                    "JetBrains Mono", "Courier New", monospace !important;
                 }
+
                 p {
                   text-align: justify;
+                  color: white !important;
+                  font-family:
+                    "JetBrains Mono", "Courier New", monospace !important;
                 }
+
                 a {
-                  color: #00ff00;
+                  color: #00ff00 !important;
                   padding-left: 0.25rem;
                   padding-right: 0.25rem;
                   text-decoration: none;
+                  font-family:
+                    "JetBrains Mono", "Courier New", monospace !important;
                 }
+
                 a:hover {
-                  color: black;
-                  background-color: #00ff00;
+                  color: black !important;
+                  background-color: #00ff00 !important;
+                }
+
+                /* Additional email client specific overrides */
+                [data-ogsc] body {
+                  background-color: black !important;
+                }
+
+                /* Gmail specific */
+                u + .body {
+                  background-color: black !important;
                 }
               </style>
             </head>
             <body>
-              <h1>Hack Club Győr</h1>
-              <p>Kedves ${input.name}!</p>
-              <p>
-                Megkaptuk a jelentkezésedet a győri Hack Club közösségébe.
-                Ahhoz, hogy teljeskörű klubtag lehess, be kell lépj Discord
-                szerverünkre. Az alábbi linkre kattintva összekapcsolhatod a
-                jelentkezésed Discord fiókoddal.
-              </p>
-              <a href="${generateOauthLink(id)}">Discord bejelentkezés &gt;</a>
+              <table
+                width="100%"
+                cellpadding="0"
+                cellspacing="0"
+                style="background-color: black !important;"
+              >
+                <tr>
+                  <td
+                    style="background-color: black !important; padding: 20px;"
+                  >
+                    <h1>Hack Club Győr</h1>
+                    <p>Kedves ${input.name}!</p>
+                    <p>
+                      Megkaptuk a jelentkezésedet a győri Hack Club közösségébe.
+                      Ahhoz, hogy teljeskörű klubtag lehess, be kell lépj
+                      Discord szerverünkre. Az alábbi linkre kattintva
+                      összekapcsolhatod a jelentkezésed Discord fiókoddal.
+                    </p>
+                    <a href="${generateOauthLink(id)}"
+                      >Discord bejelentkezés &gt;</a
+                    >
+                  </td>
+                </tr>
+              </table>
             </body>
           </html>
         `,
