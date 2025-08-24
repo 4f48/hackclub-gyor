@@ -23,6 +23,7 @@ const results: {
     access_token: string;
 } = await response.json();
 const access_token = results.access_token;
+console.debug(access_token);
 
 const user = await (
     await fetch("https://discord.com/api/users/@me", {
