@@ -8,8 +8,11 @@ import { actions } from "astro:actions";
 
 export const prerender = false;
 const result = Astro.getActionResult(actions.signup);
-if (result && result.error) {
-    console.error(result);
+if (result && result.data && !result.error) {
+    return Astro.redirect(
+        `/siker?email=${encodeURIComponent(result.data.email)}`,
+        303,
+    );
 }
 ---
 
@@ -45,12 +48,6 @@ if (result && result.error) {
             placeholder="orpheus@hackclubgyor.com"
             type="email"
             required
-        />
-        <FormField
-            id="discord"
-            label="Discord felhasználónév"
-            name="discord"
-            placeholder="(nem a megjelenített név)"
         />
         <FormField
             id="school"

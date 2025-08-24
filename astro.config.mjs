@@ -32,6 +32,16 @@ export default defineConfig({
   },
   env: {
     schema: {
+      DISCORD_CLIENT_ID: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+      }),
+      DISCORD_CLIENT_SECRET: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+      }),
       DISCORD_WEBHOOK_URL: envField.string({
         context: "server",
         access: "secret",
@@ -62,6 +72,7 @@ export default defineConfig({
   adapter: cloudflare({
     platformProxy: {
       enabled: true,
+      experimental: { remoteBindings: true },
     },
     imageService: "cloudflare",
   }),

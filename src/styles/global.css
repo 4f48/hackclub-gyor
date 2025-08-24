@@ -13,4 +13,7 @@
         color: lime;
         text-decoration: underline;
     }
+    strong {
+        color: lime;
+    }
 }
