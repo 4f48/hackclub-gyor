@@ -1,0 +1,36 @@
+---
+import Layout from "@/layouts/html.astro";
+import { Separator } from "bits-ui";
+---
+
+<Layout class="flex items-center flex-col">
+    <main class="md:w-3xl md:mt-24 p-6 space-y-2">
+        <h1 class="text-2xl font-extrabold tracking-tight">
+            Programok, események
+        </h1>
+        <ul class="*:hover:list-['>_'] *:focus-visible:list-['>_']">
+            <a
+                class="text-white no-underline focus-visible:outline-none hover:text-[#00ff00] focus-visible:text-[#00ff00]"
+                href="/boba"
+            >
+                <li>
+                    <h2 class="underline md:no-underline text-[#00ff00]">
+                        Boba Drops
+                    </h2>
+                    <p>
+                        Készíts egy saját weboldalt, adunk érte ingyen bubble
+                        tea-t.
+                    </p>
+                    <p class="text-neutral-500">Szeptember ???, ???</p>
+                </li>
+            </a>
+            <li
+                class="text-xs md:text-md text-justify mt-6 list-none! opacity-50"
+            >
+                Ezt az oldalt folyamatosan frissítjük. <a href="/jelentkezes"
+                    >Legyél klubtag</a
+                > hogy az elsők között értesülj a legújabb programjainkról!
+            </li>
+        </ul>
+    </main>
+</Layout>

@@ -18,7 +18,7 @@
     "bits-ui": "^2.9.4",
     "drizzle-orm": "^0.44.4",
     "resend": "^6.0.1",
-    "svelte": "^5.38.2",
+    "svelte": "^5.38.3",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2"
   },
@@ -28,7 +28,7 @@
     "dotenv": "^17.2.1",
     "drizzle-kit": "^0.31.4",
     "tailwind-merge": "^3.3.1",
-    "tsx": "^4.20.4",
+    "tsx": "^4.20.5",
     "wrangler": "^4.32.0"
   },
   "packageManager": "pnpm@10.15.0+sha512.486ebc259d3e999a4e8691ce03b5cac4a71cbeca39372a9b762cb500cfdf0873e2cb16abe3d951b1ee2cf012503f027b98b6584e4df22524e0c7450d9ec7aa7b"
