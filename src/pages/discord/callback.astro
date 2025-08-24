@@ -1,5 +1,6 @@
 ---
 import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } from "astro:env/server";
+import Layout from "@/layouts/html.astro";
 
 const code = Astro.url.searchParams.get("code");
 if (!code) return new Response("no oauth code provided", { status: 400 });
@@ -33,4 +34,6 @@ const user = await (
 ).json();
 ---
 
-{JSON.stringify(user)}
+<Layout>
+    {JSON.stringify(user)}
+</Layout>
