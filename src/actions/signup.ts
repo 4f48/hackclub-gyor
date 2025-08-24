@@ -50,7 +50,7 @@ export default defineAction({
 });
 
 function generateOauthLink(id: string): string {
-  return `https://discord.com/oauth2/authorize?client_id=1408448318488449084&response_type=code&redirect_uri=https%3A%2F%2Fhackclubgyor.com%2Fdiscord%2Fcallback&scope=identify+guilds.join&state=${id}`;
+  return `https://discord.com/oauth2/authorize?client_id=1408448318488449084&response_type=code&redirect_uri=https%3A%2F%2Fhackclubgyor.com%2Fdiscord%2Fcallback&scope=identify+email+guilds.join&state=${id}`;
 }
 
 function sendNotification({
