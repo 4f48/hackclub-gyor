@@ -1,19 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: var(--font-fraunces);
-  --font-mono: var(--font-jbm);
+    --font-serif: var(--font-fraunces);
+    --font-mono: var(--font-jbm);
 }
 
 @layer base {
-  * {
-    border-color: white;
-  }
-  a {
-    color: lime;
-    text-decoration: underline;
-  }
-  strong {
-    color: lime;
-  }
+    * {
+        border-color: white;
+    }
+    a {
+        color: lime;
+        text-decoration: underline;
+    }
+    a:focus-visible {
+        color: black;
+        background-color: lime;
+        outline: none;
+    }
+    strong {
+        color: lime;
+    }
 }
