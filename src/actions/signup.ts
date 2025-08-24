@@ -16,32 +16,27 @@ export default defineAction({
   }),
   handler: async (input) => {
     try {
-      const { rowsAffected } = await db.insert(member).values({
+      await db.insert(member).values({
         birthday: new Date(input.birthday),
         email: input.email,
         name: input.name,
         school: input.school,
       });
-      if (rowsAffected === 1) {
-        const { error } = await resend.emails.send({
-          from: "Hack Club Győr <noreply.hackclubgyor.com>",
-          to: input.email,
-          subject: "Regisztráció befejezése",
-          text: generateOauthLink(),
-        });
-        if (error)
-          throw new ActionError({
-            code: "INTERNAL_SERVER_ERROR",
-            message: "failed to send email",
-          });
-        // await sendNotification({ ...input });
-        return { email: input.email };
-      } else {
+      const { error } = await resend.emails.send({
+        from: "Hack Club Győr <noreply@mail.hackclubgyor.com>",
+        to: input.email,
+        subject: "Regisztráció befejezése",
+        text: generateOauthLink(),
+      });
+      if (error) {
+        console.error(error);
         throw new ActionError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "failed to register user",
+          message: "failed to send email",
         });
       }
+      // await sendNotification({ ...input });
+      return { email: input.email };
     } catch (err) {
       console.error(err);
       throw new ActionError({
