@@ -34,7 +34,7 @@ export default defineAction({
             code: "INTERNAL_SERVER_ERROR",
             message: "failed to send email",
           });
-        // sendNotification({ ...input });
+        // await sendNotification({ ...input });
         return { email: input.email };
       } else {
         throw new ActionError({

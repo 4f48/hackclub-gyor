@@ -1,7 +1,6 @@
 ---
 import Layout from "@/layouts/html.astro";
 
-export const prerender = false;
 const email = Astro.url.searchParams.get("email");
 if (email === null) return Astro.redirect("/jelentkezes", 303);
 ---

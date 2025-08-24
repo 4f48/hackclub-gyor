@@ -6,7 +6,6 @@ import logo from "@/assets/images/logo.avif";
 import Birthday from "@/components/birthday.svelte";
 import { actions } from "astro:actions";
 
-export const prerender = false;
 const result = Astro.getActionResult(actions.signup);
 if (result && result.data && !result.error) {
     return Astro.redirect(
@@ -19,7 +18,7 @@ if (result && result.data && !result.error) {
 <Layout class="flex justify-center">
     <form
         action={actions.signup}
-        class="md:mt-24 md:w-lg md:bg-neutral-900 md:border p-6 space-y-4"
+        class="md:mt-24 md:w-lg p-6 space-y-4"
         method="post"
     >
         <div class="flex flex-col items-center gap-2">
