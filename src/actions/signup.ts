@@ -54,7 +54,7 @@ function generateOauthLink(): string {
     .map((byte) => byte.toString(16).padStart(2, "0"))
     .join("");
 
-  return `https://discord.com/oauth2/authorize?client_id=1408448318488449084&response_type=code&redirect_uri=https%3A%2F%2Fhackclubgyor.com%2Fdiscord%2Fcallback&scope=email+guilds.join&state=${state}`;
+  return `https://discord.com/oauth2/authorize?client_id=1408448318488449084&response_type=code&redirect_uri=https%3A%2F%2Fhackclubgyor.com%2Fdiscord%2Fcallback&scope=identify+email+guilds.join&state=${state}`;
 }
 
 function sendNotification({
