@@ -16,17 +16,19 @@ export default defineAction({
   }),
   handler: async (input) => {
     try {
+      const id = crypto.randomUUID();
       await db.insert(member).values({
-        birthday: new Date(input.birthday),
-        email: input.email,
+        id,
         name: input.name,
+        email: input.email,
         school: input.school,
+        birthday: new Date(input.birthday),
       });
       const { error } = await resend.emails.send({
         from: "Hack Club Győr <noreply@mail.hackclubgyor.com>",
         to: input.email,
         subject: "Regisztráció befejezése",
-        text: generateOauthLink(),
+        text: generateOauthLink(id),
       });
       if (error) {
         console.error(error);
@@ -47,14 +49,8 @@ export default defineAction({
   },
 });
 
-function generateOauthLink(): string {
-  const buf = new Uint8Array(32);
-  crypto.getRandomValues(buf);
-  const state = Array.from(buf)
-    .map((byte) => byte.toString(16).padStart(2, "0"))
-    .join("");
-
-  return `https://discord.com/oauth2/authorize?client_id=1408448318488449084&response_type=code&redirect_uri=https%3A%2F%2Fhackclubgyor.com%2Fdiscord%2Fcallback&scope=identify+email+guilds.join&state=${state}`;
+function generateOauthLink(id: string): string {
+  return `https://discord.com/oauth2/authorize?client_id=1408448318488449084&response_type=code&redirect_uri=https%3A%2F%2Fhackclubgyor.com%2Fdiscord%2Fcallback&scope=identify+email+guilds.join&state=${id}`;
 }
 
 function sendNotification({

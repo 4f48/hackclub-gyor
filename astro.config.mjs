@@ -32,6 +32,11 @@ export default defineConfig({
   },
   env: {
     schema: {
+      DISCORD_BOT_TOKEN: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+      }),
       DISCORD_CLIENT_ID: envField.string({
         context: "server",
         access: "secret",
