@@ -8,57 +8,57 @@ import { actions } from "astro:actions";
 
 const result = Astro.getActionResult(actions.signup);
 if (result && result.data && !result.error) {
-    return Astro.redirect(
-        `/siker?email=${encodeURIComponent(result.data.email)}`,
-        303,
-    );
+	return Astro.redirect(
+		`/siker?email=${encodeURIComponent(result.data.email)}`,
+		303
+	);
 }
 ---
 
 <Layout class="flex justify-center">
-    <form
-        action={actions.signup}
-        class="md:mt-24 md:w-lg p-6 space-y-4"
-        method="post"
-    >
-        <div class="flex flex-col items-center gap-2">
-            <Image
-                alt="Hack Club Győr logo"
-                class="size-24 select-none"
-                loading="eager"
-                draggable={false}
-                src={logo}
-            />
-            <h1 class="text-2xl text-center font-extrabold">
-                Hack Club Győr jelentkezés
-            </h1>
-        </div>
-        <FormField
-            id="name"
-            label="Teljes név"
-            name="name"
-            placeholder="Orpheus Dino"
-            required
-        />
-        <FormField
-            id="email"
-            label="E-mail cím"
-            name="email"
-            placeholder="orpheus@hackclubgyor.com"
-            type="email"
-            required
-        />
-        <FormField
-            id="school"
-            label="Iskola"
-            name="school"
-            placeholder="Győri SZC Jedlik Ányos..."
-            required
-        />
-        <Birthday client:visible />
-        <button
-            class="bg-[#00ff00] text-black focus-visible:outline-none focus-visible:bg-[#00ff00]/75 w-full p-1 cursor-pointer"
-            type="submit">Beküldés</button
-        >
-    </form>
+	<form
+		action={actions.signup}
+		class="space-y-4 p-6 md:mt-24 md:w-lg"
+		method="post"
+	>
+		<div class="flex flex-col items-center gap-2">
+			<Image
+				alt="Hack Club Győr logo"
+				class="size-24 select-none"
+				loading="eager"
+				draggable={false}
+				src={logo}
+			/>
+			<h1 class="text-center text-2xl font-extrabold">
+				Hack Club Győr jelentkezés
+			</h1>
+		</div>
+		<FormField
+			id="name"
+			label="Teljes név"
+			name="name"
+			placeholder="Orpheus Dino"
+			required
+		/>
+		<FormField
+			id="email"
+			label="E-mail cím"
+			name="email"
+			placeholder="orpheus@hackclubgyor.com"
+			type="email"
+			required
+		/>
+		<FormField
+			id="school"
+			label="Iskola"
+			name="school"
+			placeholder="Győri SZC Jedlik Ányos..."
+			required
+		/>
+		<Birthday client:visible />
+		<button
+			class="w-full cursor-pointer bg-[#00ff00] p-1 text-black focus-visible:bg-[#00ff00]/75 focus-visible:outline-none"
+			type="submit">Beküldés</button
+		>
+	</form>
 </Layout>

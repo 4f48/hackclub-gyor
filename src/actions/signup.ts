@@ -7,28 +7,28 @@ import { DISCORD_WEBHOOK_URL } from "astro:env/server";
 import { z } from "astro:schema";
 
 export default defineAction({
-  accept: "form",
-  input: z.object({
-    name: z.string(),
-    email: z.string().email(),
-    school: z.string(),
-    birthday: z.string().date(),
-  }),
-  handler: async (input) => {
-    try {
-      const id = crypto.randomUUID();
-      await db.insert(member).values({
-        id,
-        name: input.name,
-        email: input.email,
-        school: input.school,
-        birthday: new Date(input.birthday),
-      });
-      const { error } = await resend.emails.send({
-        from: "Hack Club Győr <noreply@mail.hackclubgyor.com>",
-        to: input.email,
-        subject: "Regisztráció befejezése",
-        html: `
+	accept: "form",
+	input: z.object({
+		name: z.string(),
+		email: z.string().email(),
+		school: z.string(),
+		birthday: z.string().date(),
+	}),
+	handler: async (input) => {
+		try {
+			const id = crypto.randomUUID();
+			await db.insert(member).values({
+				id,
+				name: input.name,
+				email: input.email,
+				school: input.school,
+				birthday: new Date(input.birthday),
+			});
+			const { error } = await resend.emails.send({
+				from: "Hack Club Győr <noreply@mail.hackclubgyor.com>",
+				to: input.email,
+				subject: "Regisztráció befejezése",
+				html: `
           <!DOCTYPE html>
           <html>
             <head>
@@ -140,78 +140,78 @@ export default defineAction({
             </body>
           </html>
         `,
-      });
-      if (error) {
-        console.error(error);
-        throw new ActionError({
-          code: "INTERNAL_SERVER_ERROR",
-          message: "failed to send email",
-        });
-      }
-      // await sendNotification({ ...input });
-      return { email: input.email };
-    } catch (err) {
-      console.error(err);
-      throw new ActionError({
-        code: "INTERNAL_SERVER_ERROR",
-        message: "something went wronk",
-      });
-    }
-  },
+			});
+			if (error) {
+				console.error(error);
+				throw new ActionError({
+					code: "INTERNAL_SERVER_ERROR",
+					message: "failed to send email",
+				});
+			}
+			// await sendNotification({ ...input });
+			return { email: input.email };
+		} catch (err) {
+			console.error(err);
+			throw new ActionError({
+				code: "INTERNAL_SERVER_ERROR",
+				message: "something went wronk",
+			});
+		}
+	},
 });
 
 function generateOauthLink(id: string): string {
-  return `https://discord.com/oauth2/authorize?client_id=1408448318488449084&response_type=code&redirect_uri=https%3A%2F%2Fhackclubgyor.com%2Fdiscord%2Fcallback&scope=identify+guilds.join&state=${id}`;
+	return `https://discord.com/oauth2/authorize?client_id=1408448318488449084&response_type=code&redirect_uri=https%3A%2F%2Fhackclubgyor.com%2Fdiscord%2Fcallback&scope=identify+guilds.join&state=${id}`;
 }
 
 function sendNotification({
-  name,
-  email,
-  school,
-  birthday,
+	name,
+	email,
+	school,
+	birthday,
 }: {
-  name: string;
-  email: string;
-  school: string;
-  birthday: string;
+	name: string;
+	email: string;
+	school: string;
+	birthday: string;
 }): Promise<Response> {
-  const payload = {
-    embeds: [
-      {
-        title: "Új jelentkezés",
-        fields: [
-          {
-            name: "Név",
-            value: name,
-            inline: true,
-          },
-          {
-            name: "E-mail cím",
-            value: email,
-            inline: true,
-          },
-          {
-            name: "Iskola",
-            value: school,
-            inline: true,
-          },
-          {
-            name: "Születésnap",
-            value: birthday,
-            inline: true,
-          },
-        ],
-        color: 0x00ff00,
-        timestamp: now("Europe/Budapest").toAbsoluteString(),
-      },
-    ],
-    username: "Orpheus",
-    avatarURL:
-      "https://rawr.hackclub.com/dinosaur_sealing_letters_with_wax.png",
-  };
-  return fetch(DISCORD_WEBHOOK_URL, {
-    method: "post",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(payload),
-  });
+	const payload = {
+		embeds: [
+			{
+				title: "Új jelentkezés",
+				fields: [
+					{
+						name: "Név",
+						value: name,
+						inline: true,
+					},
+					{
+						name: "E-mail cím",
+						value: email,
+						inline: true,
+					},
+					{
+						name: "Iskola",
+						value: school,
+						inline: true,
+					},
+					{
+						name: "Születésnap",
+						value: birthday,
+						inline: true,
+					},
+				],
+				color: 0x00ff00,
+				timestamp: now("Europe/Budapest").toAbsoluteString(),
+			},
+		],
+		username: "Orpheus",
+		avatarURL:
+			"https://rawr.hackclub.com/dinosaur_sealing_letters_with_wax.png",
+	};
+	return fetch(DISCORD_WEBHOOK_URL, {
+		method: "post",
+		headers: { "content-type": "application/json" },
+		body: JSON.stringify(payload),
+	});
 }

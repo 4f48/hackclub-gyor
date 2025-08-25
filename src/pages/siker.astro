@@ -6,19 +6,19 @@ if (email === null) return Astro.redirect("/jelentkezes", 303);
 ---
 
 <Layout class="flex flex-col items-center">
-    <main class="md:mt-24 md:w-xl text-justify space-y-6 md:space-y-2 p-6">
-        <h1 class="text-2xl text-[#00ff00] font-extrabold">Sikerült!</h1>
-        <p>
-            Már csak egy lépésre vagy attól hogy teljeskörű klubtag legyél.
-            Küldtünk egy e-mailt <strong>{email}</strong> címedre. Kattints a benne
-            található linkre a Discord szerverhez való csatlakozáshoz.
-        </p>
-        <div
-            class="flex *:no-underline *:hover:bg-[#00ff00] gap-3 *:hover:text-black *:px-1 items-center flex-wrap"
-        >
-            <a href="https://mail.google.com">Gmail &gt;</a>
-            <a href="https://outlook.live.com">Outlook &gt;</a>
-            <a href="https://icloud.com/mail">iCloud &gt;</a>
-        </div>
-    </main>
+	<main class="space-y-6 p-6 text-justify md:mt-24 md:w-xl md:space-y-2">
+		<h1 class="text-2xl font-extrabold text-[#00ff00]">Sikerült!</h1>
+		<p>
+			Már csak egy lépésre vagy attól hogy teljeskörű klubtag legyél. Küldtünk
+			egy e-mailt <strong>{email}</strong> címedre. Kattints a benne található linkre
+			a Discord szerverhez való csatlakozáshoz.
+		</p>
+		<div
+			class="flex flex-wrap items-center gap-3 *:px-1 *:no-underline *:hover:bg-[#00ff00] *:hover:text-black"
+		>
+			<a href="https://mail.google.com">Gmail &gt;</a>
+			<a href="https://outlook.live.com">Outlook &gt;</a>
+			<a href="https://icloud.com/mail">iCloud &gt;</a>
+		</div>
+	</main>
 </Layout>

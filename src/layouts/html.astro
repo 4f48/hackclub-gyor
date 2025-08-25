@@ -8,22 +8,22 @@ const { class: className, ...props }: HTMLAttributes<"body"> = Astro.props;
 ---
 
 <html lang="hu">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Hack Club Győr</title>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Hack Club Győr</title>
 
-        <Font cssVariable="--font-jbm" preload />
-    </head>
-    <body
-        class={cn(
-            "bg-black text-white font-mono selection:bg-[#00ff00] selection:text-black",
-            className,
-        )}
-        {...props}
-    >
-        <slot />
-    </body>
+		<Font cssVariable="--font-jbm" preload />
+	</head>
+	<body
+		class={cn(
+			"bg-black font-mono text-white selection:bg-[#00ff00] selection:text-black",
+			className
+		)}
+		{...props}
+	>
+		<slot />
+	</body>
 </html>

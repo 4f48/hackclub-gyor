@@ -10,125 +10,116 @@ import Card3 from "@/assets/images/boba/card3.avif";
 import Card4 from "@/assets/images/boba/card4.avif";
 import Parrot from "@/assets/images/boba/parrot.gif";
 import { Image } from "astro:assets";
+
+export const prerender = true;
 ---
 
 <html lang="hu">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="/boba-drops.png" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Boba Drops // Hack Club Győr</title>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="/boba-drops.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Boba Drops // Hack Club Győr</title>
 
-        <Font cssVariable="--font-fraunces" preload />
-    </head>
-    <body
-        class="font-serif bg-[#bb630b] *:text-[#f6d193] selection:bg-[#f6d193] grid gap-6 selection:text-[#bb630b]"
-    >
-        <a
-            aria-label="hack club website"
-            class="focus-visible:opacity-50 focus-visible:bg-transparent"
-            draggable={false}
-            href="https://hackclub.com"
-            target="_blank"
-        >
-            <Banner class="size-24 md:size-32" />
-        </a>
-        <main class="flex items-center gap-6 flex-col justify-center">
-            <BobaDrops class="w-[90vw] shrink-0 md:w-[60vw]" />
-            <h1
-                class="text-3xl flex items-center md:flex-row flex-col md:gap-24"
-            >
-                <span>Készíts weboldalt...</span>
-                <span>Ingyen bobáért!</span>
-            </h1>
-            <a
-                class="p-3 bg-[#603101] focus-visible:ring-2 focus-visible:ring-[#603101] focus-visible:ring-offset-2 focus-visible:ring-offset-[#bb630b] underline shadow-lg hover:-translate-y-1 transition-transform duration-400 rounded-xl text-[#f6d193] text-2xl font-medium"
-                href="https://hackclubgyor.fillout.com/boba-drops"
-                >Jelentkezés most</a
-            >
-            <p class="text-2xl">Görgess tovább a részletekért</p>
-        </main>
-        <section class="flex justify-center">
-            <div
-                class="grid md:grid-rows-2 md:grid-cols-2 md:w-[60vw] px-6 gap-6"
-            >
-                <BobaStep
-                    alt="man in glasses working on laptop with earphones in"
-                    src={Card1}
-                    step={1}>Készíts egy weboldalt</BobaStep
-                >
-                <BobaStep
-                    alt="man in glasses working on laptop with earphones in"
-                    src={Card2}
-                    step={2}>Töltsd fel GitHub-ra</BobaStep
-                >
-                <BobaStep
-                    alt="man in glasses working on laptop with earphones in"
-                    src={Card3}
-                    step={3}>Kapj ingyen bobát</BobaStep
-                >
-                <BobaStep
-                    alt="man in glasses working on laptop with earphones in"
-                    src={Card4}
-                    step={4}>Egészségedre!</BobaStep
-                >
-            </div>
-        </section>
-        <section class="flex justify-center p-6">
-            <div class="md:w-[75vw] flex flex-col gap-4 items-start">
-                <h2 class="font-bold text-2xl md:text-4xl">
-                    Esemény részletei
-                </h2>
-                <p class="text-lg font-medium md:text-2xl text-justify">
-                    A győri Hack Club első találkozóján megtanuljuk, hogyan kell
-                    weboldalt készíteni és közzétenni az interneten. Nincs
-                    szükség előzetes programozási tapasztalatra, megtanítunk
-                    mindenre, amit tudnod kell.
-                </p>
-                <ul class="[&_strong]:text-[#f6d193] text-lg md:text-2xl pl-6">
-                    <li class="list-disc">
-                        <strong>Ki vehet részt?</strong> Közép- és általánosiskolás
-                        diákok.
-                    </li>
-                    <li class="list-disc">
-                        <strong>Hol lesz?</strong> Még nem tudjuk.
-                    </li>
-                    <li class="list-disc">
-                        <strong>Mikor lesz?</strong> Ezt sem tudjuk még.
-                    </li>
-                    <li class="list-disc">
-                        <strong>Mit hozzak?</strong> Egy feltöltött laptopot (iskolai
-                        is jó)
-                    </li>
-                    <li class="list-disc">
-                        <strong>Mit kapok cserébe?</strong> Az idődért cserébe ingyen
-                        bobát (bubble tea), matricákat és ami a legfontosabb, tudást
-                        adunk! (ami felbecsülhetetlen értékű)
-                    </li>
-                </ul>
-                <p class="text-lg md:text-2xl">
-                    Mire vársz még? Gyere, csatlakozz hozzánk!
-                </p>
-                <a
-                    class="p-3 bg-[#603101] focus-visible:ring-2 focus-visible:ring-[#603101] focus-visible:ring-offset-2 focus-visible:ring-offset-[#bb630b] underline shadow-lg hover:-translate-y-1 transition-transform duration-400 rounded-xl text-[#f6d193] text-2xl font-medium"
-                    href="https://hackclubgyor.fillout.com/boba-drops"
-                    >Jelentkezés most</a
-                >
-            </div>
-        </section>
-        <footer class="bg-[#603101] mt-12 py-6 md:py-12 text-center">
-            <p class="text-lg md:text-2xl">
-                Sok <Image
-                    alt="papagáj bobával"
-                    class="inline -translate-y-1 select-none"
-                    draggable={false}
-                    src={Parrot}
-                />&dash;al a <a
-                    class="text-[#f6d193] focus-visible:bg-[#f6d193]/10 focus-visible:outline rounded-sm focus-visible:no-underline"
-                    href="https://hackclub.com">Hack Club</a
-                >&dash;tól.
-            </p>
-        </footer>
-    </body>
+		<Font cssVariable="--font-fraunces" preload />
+	</head>
+	<body
+		class="grid gap-6 bg-[#bb630b] font-serif *:text-[#f6d193] selection:bg-[#f6d193] selection:text-[#bb630b]"
+	>
+		<a
+			aria-label="hack club website"
+			class="focus-visible:bg-transparent focus-visible:opacity-50"
+			draggable={false}
+			href="https://hackclub.com"
+			target="_blank"
+		>
+			<Banner class="size-24 md:size-32" />
+		</a>
+		<main class="flex flex-col items-center justify-center gap-6">
+			<BobaDrops class="w-[90vw] shrink-0 md:w-[60vw]" />
+			<h1 class="flex flex-col items-center text-3xl md:flex-row md:gap-24">
+				<span>Készíts weboldalt...</span>
+				<span>Ingyen bobáért!</span>
+			</h1>
+			<a
+				class="rounded-xl bg-[#603101] p-3 text-2xl font-medium text-[#f6d193] underline shadow-lg transition-transform duration-400 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#603101] focus-visible:ring-offset-2 focus-visible:ring-offset-[#bb630b]"
+				href="https://hackclubgyor.fillout.com/boba-drops">Jelentkezés most</a
+			>
+			<p class="text-2xl">Görgess tovább a részletekért</p>
+		</main>
+		<section class="flex justify-center">
+			<div class="grid gap-6 px-6 md:w-[60vw] md:grid-cols-2 md:grid-rows-2">
+				<BobaStep
+					alt="man in glasses working on laptop with earphones in"
+					src={Card1}
+					step={1}>Készíts egy weboldalt</BobaStep
+				>
+				<BobaStep
+					alt="man in glasses working on laptop with earphones in"
+					src={Card2}
+					step={2}>Töltsd fel GitHub-ra</BobaStep
+				>
+				<BobaStep
+					alt="man in glasses working on laptop with earphones in"
+					src={Card3}
+					step={3}>Kapj ingyen bobát</BobaStep
+				>
+				<BobaStep
+					alt="man in glasses working on laptop with earphones in"
+					src={Card4}
+					step={4}>Egészségedre!</BobaStep
+				>
+			</div>
+		</section>
+		<section class="flex justify-center p-6">
+			<div class="flex flex-col items-start gap-4 md:w-[75vw]">
+				<h2 class="text-2xl font-bold md:text-4xl">Esemény részletei</h2>
+				<p class="text-justify text-lg font-medium md:text-2xl">
+					A győri Hack Club első találkozóján megtanuljuk, hogyan kell weboldalt
+					készíteni és közzétenni az interneten. Nincs szükség előzetes
+					programozási tapasztalatra, megtanítunk mindenre, amit tudnod kell.
+				</p>
+				<ul class="pl-6 text-lg md:text-2xl [&_strong]:text-[#f6d193]">
+					<li class="list-disc">
+						<strong>Ki vehet részt?</strong> Közép- és általánosiskolás diákok.
+					</li>
+					<li class="list-disc">
+						<strong>Hol lesz?</strong> Még nem tudjuk.
+					</li>
+					<li class="list-disc">
+						<strong>Mikor lesz?</strong> Ezt sem tudjuk még.
+					</li>
+					<li class="list-disc">
+						<strong>Mit hozzak?</strong> Egy feltöltött laptopot (iskolai is jó)
+					</li>
+					<li class="list-disc">
+						<strong>Mit kapok cserébe?</strong> Az idődért cserébe ingyen bobát (bubble
+						tea), matricákat és ami a legfontosabb, tudást adunk! (ami felbecsülhetetlen
+						értékű)
+					</li>
+				</ul>
+				<p class="text-lg md:text-2xl">
+					Mire vársz még? Gyere, csatlakozz hozzánk!
+				</p>
+				<a
+					class="rounded-xl bg-[#603101] p-3 text-2xl font-medium text-[#f6d193] underline shadow-lg transition-transform duration-400 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#603101] focus-visible:ring-offset-2 focus-visible:ring-offset-[#bb630b]"
+					href="https://hackclubgyor.fillout.com/boba-drops">Jelentkezés most</a
+				>
+			</div>
+		</section>
+		<footer class="mt-12 bg-[#603101] py-6 text-center md:py-12">
+			<p class="text-lg md:text-2xl">
+				Sok <Image
+					alt="papagáj bobával"
+					class="inline -translate-y-1 select-none"
+					draggable={false}
+					src={Parrot}
+				/>&dash;al a <a
+					class="rounded-sm text-[#f6d193] focus-visible:bg-[#f6d193]/10 focus-visible:no-underline focus-visible:outline"
+					href="https://hackclub.com">Hack Club</a
+				>&dash;tól.
+			</p>
+		</footer>
+	</body>
 </html>
