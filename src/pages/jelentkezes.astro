@@ -17,10 +17,10 @@ if (result && result.data && !result.error) {
 ---
 
 <script
-	async
+	src="https://challenges.cloudflare.com/turnstile/v0/api.js"
 	defer
 	is:inline
-	src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+	async></script>
 
 <Layout class="flex flex-col items-center">
 	{
@@ -68,11 +68,7 @@ if (result && result.data && !result.error) {
 			required
 		/>
 		<Birthday client:visible />
-		<div
-			class="cf-turnstile flex justify-center"
-			data-sitekey={TURNSTILE_SITE_KEY}
-		>
-		</div>
+		<div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY}></div>
 		<button
 			class="w-full cursor-pointer bg-[#00ff00] p-1 text-black focus-visible:bg-[#00ff00]/75 focus-visible:outline-none"
 			type="submit">Beküldés</button
