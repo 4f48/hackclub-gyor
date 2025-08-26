@@ -33,11 +33,13 @@ export default defineAction({
 					}
 				)
 			).json();
-			if (!validate.success)
+			if (!validate.success) {
+				console.error("captcha verification failed");
 				throw new ActionError({
 					code: "BAD_REQUEST",
 					message: "captcha verification failed",
 				});
+			}
 
 			const id = crypto.randomUUID();
 			await db.insert(member).values({
