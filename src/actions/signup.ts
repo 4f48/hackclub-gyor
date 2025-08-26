@@ -3,7 +3,7 @@ import { resend } from "@/lib/mail";
 import { member } from "@/lib/schema";
 import { now } from "@internationalized/date";
 import { ActionError, defineAction } from "astro:actions";
-import { DISCORD_WEBHOOK_URL } from "astro:env/server";
+import { DISCORD_WEBHOOK_URL, TURNSTILE_SECRET_KEY } from "astro:env/server";
 import { z } from "astro:schema";
 
 export default defineAction({
@@ -13,9 +13,32 @@ export default defineAction({
 		email: z.string().email(),
 		school: z.string(),
 		birthday: z.string().date(),
+		"cf-turnstile-response": z.string(),
 	}),
-	handler: async (input) => {
+	handler: async (input, { clientAddress }) => {
 		try {
+			const validate: { success: boolean } = await (
+				await fetch(
+					"https://challenges.cloudflare.com/turnstile/v0/siteverify",
+					{
+						body: JSON.stringify({
+							secret: TURNSTILE_SECRET_KEY,
+							response: input["cf-turnstile-response"],
+							remoteip: clientAddress,
+						}),
+						headers: {
+							"content-type": "application/json",
+						},
+						method: "post",
+					}
+				)
+			).json();
+			if (!validate.success)
+				throw new ActionError({
+					code: "BAD_REQUEST",
+					message: "captcha verification failed",
+				});
+
 			const id = crypto.randomUUID();
 			await db.insert(member).values({
 				id,
