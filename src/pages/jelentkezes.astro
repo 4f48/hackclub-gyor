@@ -16,13 +16,13 @@ if (result && result.data && !result.error) {
 }
 ---
 
-<script
-	src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-	async
-	defer
-	is:inline></script>
-
 <Layout class="flex flex-col items-center">
+	<script
+		src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+		async
+		defer
+		is:inline></script>
+
 	{
 		result?.error && (
 			<p class="text-center text-red-500">{result.error.message}</p>
