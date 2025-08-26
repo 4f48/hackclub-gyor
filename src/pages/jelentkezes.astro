@@ -22,7 +22,12 @@ if (result && result.data && !result.error) {
 	is:inline
 	src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
 
-<Layout class="flex justify-center">
+<Layout class="flex flex-col items-center">
+	{
+		result?.error && (
+			<p class="text-center text-red-500">{result.error.message}</p>
+		)
+	}
 	<form
 		action={actions.signup}
 		class="space-y-4 p-6 md:mt-24 md:w-lg"
