@@ -4,7 +4,16 @@ import "@/styles/global.css";
 import type { HTMLAttributes } from "astro/types";
 import { cn } from "@/lib";
 
-const { class: className, ...props }: HTMLAttributes<"body"> = Astro.props;
+type Props = HTMLAttributes<"body"> & {
+	description?: string;
+	title?: string;
+};
+const {
+	class: className,
+	description,
+	title = "Hack Club Győr",
+	...props
+} = Astro.props;
 ---
 
 <html lang="hu">
@@ -14,7 +23,7 @@ const { class: className, ...props }: HTMLAttributes<"body"> = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		<title>Hack Club Győr</title>
+		<title>{title}</title>
 
 		<Font cssVariable="--font-jbm" preload />
 	</head>

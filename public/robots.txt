@@ -1,4 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /siker
+Disallow: /discord/callback
 
 Sitemap: https://hackclubgyor.com/sitemap-index.xml

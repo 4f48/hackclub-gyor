@@ -91,7 +91,14 @@ export default defineConfig({
 			},
 		],
 	},
-	integrations: [svelte(), sitemap()],
+	integrations: [
+		svelte(),
+		sitemap({
+			filter: (page) =>
+				page !== "https://hackclubgyor.com/discord/callback" &&
+				page !== "https://hackclubgyor.com/siker",
+		}),
+	],
 	output: "server",
 	site: "https://hackclubgyor.com",
 	vite: {
