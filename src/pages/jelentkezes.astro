@@ -5,7 +5,6 @@ import FormField from "@/components/formfield.astro";
 import logo from "@/assets/images/logo.avif";
 import Birthday from "@/components/birthday.svelte";
 import { actions } from "astro:actions";
-import { TURNSTILE_SITE_KEY } from "astro:env/client";
 
 const result = Astro.getActionResult(actions.signup);
 if (result && result.data && !result.error) {

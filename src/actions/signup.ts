@@ -173,7 +173,7 @@ export default defineAction({
 					message: "failed to send email",
 				});
 			}
-			// await sendNotification({ ...input });
+			await sendNotification({ ...input });
 			return { email: input.email };
 		} catch (err) {
 			console.error(err);
