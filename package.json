@@ -10,16 +10,16 @@
 		"format": "prettier . --write"
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "^12.6.6",
+		"@astrojs/cloudflare": "^12.6.7",
 		"@astrojs/sitemap": "^3.5.1",
 		"@astrojs/svelte": "^7.1.0",
 		"@internationalized/date": "^3.9.0",
 		"@libsql/client": "^0.15.14",
 		"@tailwindcss/vite": "^4.1.12",
-		"astro": "^5.13.4",
+		"astro": "^5.13.5",
 		"bits-ui": "^2.9.4",
 		"drizzle-orm": "^0.44.5",
-		"resend": "^6.0.1",
+		"resend": "^6.0.2",
 		"svelte": "^5.38.6",
 		"tailwindcss": "^4.1.12",
 		"typescript": "^5.9.2"
